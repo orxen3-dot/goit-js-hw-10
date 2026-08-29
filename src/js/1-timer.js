@@ -15,7 +15,7 @@ const options = {
   minuteIncrement: 1,
   onClose(selectedDates) {
       btn.setAttribute("disabled", "disabled");
-      selectedDates[0].getTime() < Date.now()
+      selectedDates[0].getTime() <= Date.now()
         ? iziToast.error({
             title: "Error",
             message: "Please choose a date in the future"
@@ -59,7 +59,6 @@ btn.addEventListener("click", () => {
         if (timeDifference <= 0) {
             clearInterval(timerId);
             btn.removeAttribute("disabled");
-            input.removeAttribute("disabled");
 
             return;
         }
